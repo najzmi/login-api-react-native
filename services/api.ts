@@ -3,7 +3,7 @@ import axios from "axios";
 import { refreshToken as refreshTokenService } from "./authService";
 
 const api = axios.create({
-  baseURL: "http://192.168.206.92:8000/api",
+  baseURL: process.env.EXPO_PUBLIC_API_URL,
   headers: {
     "Content-Type": "application/json",
   },
@@ -32,7 +32,12 @@ api.interceptors.response.use(
   async (error) => {
     const originalRequest = error.config;
 
-    if (error.response?.status === 401 && !originalRequest._retry) {
+    if (
+        error.response?.status === 401 &&
+        !originalRequest._retry &&
+        originalRequest.url !== "/refresh"
+    )
+    {
       originalRequest._retry = true;
 
       try {

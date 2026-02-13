@@ -46,10 +46,10 @@ utils/
 ---
 
 ## Config API
-
 API base URL is located in:
+ ```bash
 /services/api.ts
-
+```
 
 Change this line:
 
@@ -68,79 +68,87 @@ baseURL: "https://yourdomain.com/api",
 
 Your backend must provide the following endpoints:
 1️⃣ Login
-
+ ```bash
 POST /api/login
+```
 
+ ```bash
 Request Body
 {
   "email": "user@email.com",
   "password": "password123"
 }
-
+```
+ ```bash
 Response
 {
   "access_token": "string",
   "refresh_token": "string",
   "expires_in": 900
 }
-
+```
 2️⃣ Refresh Token
 
 POST /api/refresh
-
+ ```bash
 Request Body
 {
   "refresh_token": "string"
 }
+```
 
+ ```bash
 Response
 {
   "access_token": "string",
   "refresh_token": "string",
   "expires_in": 900
 }
-
+```
 3️⃣ Get Profile (Protected Route)
-
+ ```bash
 GET /api/profile
+```
 
+ ```bash
 Headers Required
 Authorization: Bearer access_token
+```
 
+ ```bash
 Response
 {
   "id": 1,
   "name": "John Doe",
   "email": "john@email.com"
 }
-
+```
 ## Authentication Flow
 
-User login
-Access & refresh token saved to AsyncStorage
-Axios automatically attaches Bearer token
-If 401 occurs:
-Automatically request new token
-Retry original request
-User stays logged in after app restart
+- User login
+- Access & refresh token saved to AsyncStorage
+- Axios automatically attaches Bearer token
+- If 401 occurs:
+- Automatically request new token
+- Retry original request
+- User stays logged in after app restart
 
 🎨 Features
-Clean UI
-Form validation
-Loading state
-Error handling
-Global user state
-Protected API calls
-Auto session recovery
-Bottom tab navigation
+- Clean UI
+- Form validation
+- Loading state
+- Error handling
+- Global user state
+- Protected API calls
+- Auto session recovery
+- Bottom tab navigation
 
 📦 Production Notes
-
-Before deploying:
-Replace development API URL
-Consider using .env for environment config
-Secure backend refresh implementation
-Implement role/permission system if needed
+- Before deploying:
+- Replace development API URL
+- Consider using .env for environment config
+- Secure backend refresh implementation
+- Implement role/permission system if needed
 
 ## Get started
 
@@ -157,5 +165,5 @@ Implement role/permission system if needed
    ```
 
 ## Kontak Pudin
-- [Instagram](https://t.me/pudin_ira): Kamu bisa langsung kontak saya disini
-- [Telegram](https://instagram.com/pudin.ira): Kamu bisa melihat update kegiatan saya disini
+- [Instagram](https://t.me/pudin_ira) : Kamu bisa langsung kontak saya disini
+- [Telegram](https://instagram.com/pudin.ira) : Kamu bisa melihat update kegiatan saya disini
