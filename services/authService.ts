@@ -1,9 +1,17 @@
+import axios from "axios";
 import api from "./api";
 
 type LoginPayload = {
   email: string;
   password: string;
 };
+
+const refreshClient = axios.create({
+  baseURL: process.env.EXPO_PUBLIC_API_URL,
+  headers: {
+    "Content-Type": "application/json",
+  },
+});
 
 export const login = async (data: LoginPayload) => {
   try {
@@ -16,10 +24,11 @@ export const login = async (data: LoginPayload) => {
     throw new Error("Network error. Check your connection.");
   }
 };
+
 // Untuk Kebutuhan Refresh Token
 export const refreshToken = async (refreshToken: string) => {
   try {
-    const response = await api.post("/refresh", {
+    const response = await refreshClient.post("/refresh", {
       refresh_token: refreshToken,
     });
 
