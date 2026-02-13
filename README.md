@@ -26,13 +26,13 @@ A modern React Native application built with Expo Router featuring:
 ---
 
 ## 📂 Project Structure
-app/
--(auth)/
--(tabs)/
-components/
-contexts/
-services/
-utils/
+- app/
+- -(auth)/
+- -(tabs)/
+- components/
+- contexts/
+- services/
+- utils/
 
 
 ### Folder Explanation
@@ -48,20 +48,20 @@ utils/
 ## Config API
 API base URL is located in:
  ```bash
-/services/api.ts
+/.env
 ```
 
 Change this line:
 
  ```bash
-baseURL: "http://192.168.206.92:8000/api",
+EXPO_PUBLIC_API_URL=http://192.168.206.92:8000/api
 ```
 
 Replace with your own backend URL.
 Example:
 
  ```bash
-baseURL: "https://yourdomain.com/api",
+EXPO_PUBLIC_API_URL=http://IPATAUDOMAINKAMU:8000/api
 ```
 
 ## Required Backend API

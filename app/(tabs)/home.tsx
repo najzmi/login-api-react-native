@@ -2,17 +2,12 @@ import { useAuth } from "@/contexts/AuthContext";
 import { getProfile } from "@/services/userService";
 import { useRouter } from "expo-router";
 import { useEffect, useState } from "react";
-import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
+import { StyleSheet, Text, View } from "react-native";
 
 export default function HomeScreen() {
   const router = useRouter();
-  const { user, logout } = useAuth();
+  const { user} = useAuth();
   const [profile, setProfile] = useState<any>(null);
-
-    const handleLogout = async () => {
-        await logout();
-        router.replace("/login");
-    };
 
     useEffect(() => {
       const fetchProfile = async () => {
@@ -32,10 +27,6 @@ export default function HomeScreen() {
         <Text style={styles.title}>
           🎉 Welcome, {user?.name}
         </Text>
-
-        <TouchableOpacity style={styles.button} onPress={handleLogout}>
-            <Text style={styles.buttonText}>Logout</Text>
-        </TouchableOpacity>
         </View>
     );
 }
